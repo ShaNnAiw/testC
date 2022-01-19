@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 
+
+//P4初识C语言（2）
+
+
 //int main()
 //{
 //	printf("%s\n", ("c:\test\628\test.c"));
@@ -51,33 +55,96 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int sz = 0;
+//	sz = sizeof arr / sizeof arr[0];
+//	printf("%d\n",sizeof arr);
+//	printf("%d\n",sz);
+//	return 0;
+//}
+
+//P5公开课
+
+//题目：交换两个int变量的值，不能使用第三个变量，即a=3,b=5，交换之后a=5,b=3。
+
+#include <limits.h>
+
+//使用第三个变量，进入企业采用，代码可读性高，执行效率高
+//int main()
+//{
+//	int a = 3;
+//	int b = 5;
+	//int c = 0;//准备一个空瓶
+	//c = a;//把a的值赋予c，a此时空了
+	//a = b;//把b的值付给给，b此时空了
+	//b = c;//把c的值=a原始的值赋予b，此时c空了，没用了，注意顺序
+	//printf("交换前:a=%d b=%d\n",a,b);*/
+
+	//溢出的问题
+	//INT_MAX;//右击-转到定义：2147483647
+	//int-4个字节-32个比特位-最大值
+	//如果a、b放一个超级大的数，他们的和超过最大值就不可行
+	//a = a + b;
+	//b = a - b;//=a+b-b=原来的a
+	//a = a - b;//=a+b-a=b
+
+	//按位抑或，不存在进位，可读性差，执行效率低于其他方法
+//	a = a ^ b;//011^101=110
+//	b = a ^ b;//110^101=011
+//	a = a ^ b;//110^011=101
+//	printf("交换后:a=%d b=%d\n",a,b);
+//	return 0;
+//}
+//
+
+
+//效率低，要执行11*11次	
+	//int main()
+//{
+		//int arr[] = {1,2,3,4,5,1,2,3,4,5,-1};
+		//int i = 0;
+		//int sz = sizeof(arr) / sizeof(arr[0]);//sz为数组的元素个数
+		//for (i = 0; i < sz; i++)
+		//{
+		//	int count = 0;//计数器
+		//	int j = 0;//j和count必须是i循环下的局部变量，否则count会一直+++
+		//			//创建j必须在i下的for循环，保证一个一个的比，arr[0]与arr[0-8]，arr[1]与arr[0-8]...
+		//	for (j = 0; j < sz; j++)//j循环时i时固定的，也就是拿出一个固定的元素和所有元素相比--i循环时就是依次拿所有元素和所有元素比
+		//	{
+		//		if (arr[i] == arr[j])
+//如果有一次相等，那么count+1=1，如果有两次相等那么count+1+1=2
+//例如i=0时，j循环内，有两次ij值相等，即j=0、j=5，arr[0]==arr[5]--{1},count=2
+//例如i=4时，j循环内，有一次ij值相等，即j=4，arr[4]--{1}，count=1
+	//			{
+	//				count++;
+	//			}
+	//		}
+	//		if (count == 1)
+	//		{
+	//			printf("单身狗是 %d\n",arr[i]);
+	//			break;
+	//		}
+	//	}
+	//	
+	//return 0;
+//}//啊啊啊啊啊好难理解啊要死了
+
+//按位异或：满足交换律，任何一个数异或0=他自己，任何一个数异或他自己=0	
 int main()
 {
-	int arr[10] = { 0 };
-	int sz = 0;
-	sz = sizeof arr / sizeof arr[0];
-	printf("%d\n",sizeof arr);
-	printf("%d\n",sz);
+	int arr[] = { 1,2,3,4,5,1,2,3,4,5,-1 };
+	int i = 0;
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	int ret = 0;
+	for (i = 0; i < sz; i++)
+	{
+		ret = ret ^ arr[i];
+	}
+	printf("单身狗是：%d",ret);
 	return 0;
 }
-
-//int main()
-//{
-//
-//	return 0;
-//}
-//
-//int main()
-//{
-//
-//	return 0;
-//}
-//
-//int main()
-//{
-//
-//	return 0;
-//}
 //
 //int main()
 //{
