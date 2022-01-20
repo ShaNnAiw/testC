@@ -1,4 +1,4 @@
-//#define _CRT_SECURE_NO_WARNINGS 1
+#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <string.h>
 
@@ -67,11 +67,11 @@
 
 //P5公开课
 
-//题目：交换两个int变量的值，不能使用第三个变量，即a=3,b=5，交换之后a=5,b=3。
+//题目1：交换两个int变量的值，不能使用第三个变量，即a=3,b=5，交换之后a=5,b=3。
 
 #include <limits.h>
 
-//使用第三个变量，进入企业采用，代码可读性高，执行效率高
+//（1）使用第三个变量，进入企业采用，代码可读性高，执行效率高
 //int main()
 //{
 //	int a = 3;
@@ -82,7 +82,7 @@
 	//b = c;//把c的值=a原始的值赋予b，此时c空了，没用了，注意顺序
 	//printf("交换前:a=%d b=%d\n",a,b);*/
 
-	//溢出的问题
+//（2）溢出的问题
 	//INT_MAX;//右击-转到定义：2147483647
 	//int-4个字节-32个比特位-最大值
 	//如果a、b放一个超级大的数，他们的和超过最大值就不可行
@@ -90,7 +90,7 @@
 	//b = a - b;//=a+b-b=原来的a
 	//a = a - b;//=a+b-a=b
 
-	//按位抑或，不存在进位，可读性差，执行效率低于其他方法
+//（3）按位抑或，不存在进位，可读性差，执行效率低于其他方法
 //	a = a ^ b;//011^101=110
 //	b = a ^ b;//110^101=011
 //	a = a ^ b;//110^011=101
@@ -100,7 +100,11 @@
 //
 
 
-//效率低，要执行11*11次	
+//题目2、Leetcode第136题：给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+// 例样：int a[]={1,2,3,4,5,1,2,3,4},该数组中只有5出现了一次，其他都是成对出现的，要找出5。
+
+
+//（1）效率低，要执行11*11次	
 	//int main()
 //{
 		//int arr[] = {1,2,3,4,5,1,2,3,4,5,-1};
@@ -131,32 +135,75 @@
 	//return 0;
 //}//啊啊啊啊啊好难理解啊要死了
 
-//按位异或：满足交换律，任何一个数异或0=他自己，任何一个数异或他自己=0	
+//（2）按位异或：满足交换律，任何一个数异或0=他自己，任何一个数异或他自己=0	
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,1,2,3,4,5,-1 };
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int ret = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		ret = ret ^ arr[i];
+//	}
+//	printf("单身狗是：%d",ret);
+//	return 0;
+//}
+
+
+//题目3、写一个程序，程序运行，你的电脑在1分钟之后关机，如果输入“我是猪”，就会取消关机
+//关机：cmd-shutdown -s -t 60  取消关机：shutdown -a
+// 
+
+#include <stdlib.h>//system
+#include <string.h>//strcmp
+
+//int main()
+//{
+//	char input[20] = { 0 };//存储数据
+//	//关机
+//	//C语言：system() -专门用来执行系统命令的。
+//	system("shutdown -s -t 60");//关机
+//	printf("请注意，你的电脑将在一分钟之后关机，若想取消，请输入“我是猪”：\n");
+//	scanf("%s",input);
+//	if (strcmp(input, "我是猪") == 0)//判断input中方的是不是“我是猪”-strcmp -string compare
+//	{
+//		system("shutdown -a");
+//	}
+//
+//	return 0;
+//}
+// 
+
+//初识C语言（2）的习题
+//
+//下面代码输出的结果是：
+//int num = 10;//全局变量
+//int main()
+//{
+//	int num = 1;//局部变量，全局局部变量名字冲突的情况下优先局部变量
+//	printf("num = %d\n", num);//应该是1
+//	return 0;
+//}
+
+
+MAX(int x,int y)//表示一个函数
+{//下面是函数体
+	if (x > y)
+		return x;
+	else
+		return y;
+}
 int main()
 {
-	int arr[] = { 1,2,3,4,5,1,2,3,4,5,-1 };
-	int i = 0;
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	int ret = 0;
-	for (i = 0; i < sz; i++)
-	{
-		ret = ret ^ arr[i];
-	}
-	printf("单身狗是：%d",ret);
+	int num1 = 0;
+	int num2 = 1;
+	int max = 0;
+	scanf("%d%d", &num1, &num2);
+	max = MAX(num1, num2);
+	printf("最大值是： %d",max);
 	return 0;
 }
-//
-//int main()
-//{
-//
-//	return 0;
-//}
-//
-//int main()
-//{
-//
-//	return 0;
-//}
 //
 //int main()
 //{
