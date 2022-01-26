@@ -1,3 +1,11 @@
-﻿  p4.c
-D:\文档\C_work\CE1\P4\p4.c(168,23): warning C4013: “strlen”未定义；假设外部返回 int
-  P4.vcxproj -> D:\文档\C_work\CE1\P4\x64\Debug\P4.exe
+﻿E:\VS2022\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(510,5): warning MSB8028: 中间目录(x64\Debug\)包含从另一个项目(P4.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  test.c
+D:\C\testC\P4\home\test.c(177,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\C\testC\P4\home\test.c(177,9): message : 请考虑在格式字符串中使用“%zd”
+D:\C\testC\P4\home\test.c(178,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\C\testC\P4\home\test.c(178,9): message : 请考虑在格式字符串中使用“%zd”
+D:\C\testC\P4\home\test.c(179,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\C\testC\P4\home\test.c(179,9): message : 请考虑在格式字符串中使用“%zd”
+D:\C\testC\P4\home\test.c(180,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\C\testC\P4\home\test.c(180,9): message : 请考虑在格式字符串中使用“%zd”
+  P4.vcxproj -> D:\C\testC\P4\home\x64\Debug\home.exe

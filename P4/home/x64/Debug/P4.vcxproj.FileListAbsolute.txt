@@ -1,1 +1,2 @@
 D:\文档\C_work\CE1\P4\x64\Debug\P4.exe
+D:\C\testC\P4\home\x64\Debug\home.exe
